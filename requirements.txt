@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+requests
+# add other dependencies for your model (e.g., torch, transformers) if needed
