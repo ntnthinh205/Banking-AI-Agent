@@ -4,3 +4,5 @@ pydantic
 pydantic-settings
 requests
 # add other dependencies for your model (e.g., torch, transformers) if needed
+grpcio
+grpcio-tools
