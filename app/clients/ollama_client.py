@@ -7,15 +7,19 @@ class OllamaClient(BaseClient):
         self.base_url = settings.OLLAMA_BASE_URL
         self.model = settings.LLM_MODEL
 
-    def generate_response(self, prompt: str) -> str:
+    def generate_response(self, prompt: str, system: str = None) -> str:
         url = f"{self.base_url}/api/generate"
         payload = {
             "model": self.model,
             "prompt": prompt,
             "stream": False
         }
+        if system:
+            payload["system"] = system
+
         try:
-            response = requests.post(url, json=payload, timeout=60)
+            # Tăng timeout lên 120s vì đôi khi mô hình chạy trên CPU sẽ hơi chậm
+            response = requests.post(url, json=payload, timeout=120)
             response.raise_for_status()
             data = response.json()
             return data.get("response", "")
