@@ -9,6 +9,10 @@ class Settings(BaseSettings):
     # gRPC Configuration
     USE_GRPC: bool = True
     INTENT_GRPC_TARGET: str = "localhost:50051"
+    
+    # Server Configuration
+    HOST: str = "0.0.0.0"
+    PORT: int = 8000
 
     class Config:
         env_file = ".env"
